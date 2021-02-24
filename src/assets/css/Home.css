@@ -1,0 +1,47 @@
+  .sidenav {
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #4C2467;
+    border: 1px solid #4C2467;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .sidenav a {
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+    }
+  .main {
+    margin-left: 300px; /* Same as the width of the sidenav */
+  }
+  .header{
+    text-align: right;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 26px;
+    background-color: #E8E8E8;
+    width: 100%;
+    color: #1C1C1C;
+    position: fixed;
+  }
+  .card{
+    background-color: white;
+    width: 568px;
+    height: 240px;
+    border: #707070 1px solid;
+
+  }
+  body{
+    background-color: #E3D8E6;
+  }
