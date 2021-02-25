@@ -2,8 +2,12 @@
 .btn-custom {
   width: 146px;
   height: 59px;
+  border: none;
   border-radius: 14px;
   font-size: 25px;
+}
+.btn-custom:focus {
+  outline-style: none;
 }
 
 /* Margin and Padding */

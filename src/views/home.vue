@@ -78,11 +78,11 @@ export default {
   },
   methods: {
     updateCurrentTime() {
-      this.currentTime = moment().format("LLL");
+      this.currentTime = moment().format("Do MMMM YYYY, เวลา HH:mm:ss");
     },
   },
   created() {
-    this.currentTime = moment().format("LLL");
+    this.currentTime = moment().format("Do MMMM YYYY, เวลา HH:mm:ss");
     setInterval(() => this.updateCurrentTime(), 1 * 1000);
   },
 };
