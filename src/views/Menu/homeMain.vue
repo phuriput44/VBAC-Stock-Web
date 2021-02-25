@@ -1,6 +1,6 @@
 <template>
     <div>
-<h2>ทดลอง ทดลอง</h2>
+<h2>ทดลอง ทดลอง 2</h2>
     </div>
 </template>
 
