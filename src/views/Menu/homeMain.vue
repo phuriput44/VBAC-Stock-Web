@@ -1,6 +1,6 @@
 <template>
     <div>
-<h2>dasdasdasdas</h2>
+<h2>ทดลอง ทดลอง</h2>
     </div>
 </template>
 
