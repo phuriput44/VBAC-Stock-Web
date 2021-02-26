@@ -10,6 +10,18 @@
   outline-style: none;
 }
 
+.container{
+  width: 1200px;
+  height: 800px;
+  background-color: #E8E8E8;
+}
+
+.txt-title{
+  font-size: 29px;
+}
+.txt-content{
+  font-size: 24px;
+}
 /* Margin and Padding */
 .vb-pd-0 {
   padding: 0px !important;

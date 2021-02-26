@@ -23,7 +23,9 @@
     .sidenav a {font-size: 18px;}
     }
   .main {
-    margin-left: 300px; /* Same as the width of the sidenav */
+    margin-left: 300px;
+    z-index: -1;
+    position: relative; /* Same as the width of the sidenav */
   }
   .header{
     text-align: right;

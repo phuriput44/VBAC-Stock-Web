@@ -78,18 +78,22 @@ export default {
   },
   methods: {
     updateCurrentTime() {
-      this.currentTime = moment().format("Do MMMM YYYY, เวลา HH:mm:ss");
+      this.currentTime = moment().format("Do MMMM YYYY ••• เวลา HH:mm:ss •••");
     },
   },
   created() {
-    this.currentTime = moment().format("Do MMMM YYYY, เวลา HH:mm:ss");
+    this.currentTime = moment().format("Do MMMM YYYY ••• เวลา HH:mm:ss •••");
     setInterval(() => this.updateCurrentTime(), 1 * 1000);
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.active {
-  background-color: black;
+html, 
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #E3D8E6;
+    height: 100hv;
 }
 </style>

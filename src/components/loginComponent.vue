@@ -1,10 +1,9 @@
 <template >
   <div class="vb-square-login">
-    <div class="vb-text-login " style="border-bottom : 1px solid #7D7D7D;">ชื่อเว็บไซต์</div>
+    <div class="vb-text-login " style="border-bottom : 1px solid #7D7D7D;">คลังพัสดุ</div>
     <div class="row">
       <div
         class="vb-pt-20 vb-text-title-input"
-        style="text-align: right;"
       >
         Username
       </div>
@@ -16,7 +15,6 @@
     <div class="row">
       <div
         class="vb-pt-20 vb-text-title-input"
-        style="text-align: right;"
       >
         Password
       </div>
