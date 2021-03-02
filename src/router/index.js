@@ -28,7 +28,16 @@ const routes = [
         path: "add",
         name: "add",
         component: () => import("@/views/Menu/addMain.vue"),
-
+        children:[ {
+          path: "stock",
+          name: "stock",
+          component: () => import("@/views/Menu/addMenu/addStock.vue"),
+        },
+        {
+          path: "category",
+          name: "category",
+          component: () => import("@/views/Menu/addMenu/addCategory.vue"),
+        }]
         
       },
       

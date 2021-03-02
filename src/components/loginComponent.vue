@@ -26,7 +26,7 @@
       />
     </div>
     <div>
-      <button class="btn-custom vb-mt-50" style="background-color:#DAABFF; color:white;" >
+      <button class="btn-custom vb-mt-50" >
         Login
       </button>
     </div>

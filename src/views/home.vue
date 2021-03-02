@@ -17,7 +17,7 @@
     </div>
 
     <div class="main">
-      <div style="padding-top:100px;">
+      <div style="padding-top:100px; ">
       <router-view></router-view>
       </div>
     </div>
