@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="row" style="margin-right: 0px !important;">
-        <div class="card col-4" style="margin-left: 12%;">TEST</div>
+        <div class="card col-4" style="margin-left: 12%;"></div>
         <div class="card col-4" style="margin-left: 12%;"></div>
     </div>
     <div class="container" style="margin-top: 5%; margin-bottom: 5%;">
