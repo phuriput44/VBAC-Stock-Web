@@ -24,6 +24,15 @@ const routes = [
         name: "rent",
         component: () => import("@/views/Menu/rent.vue"),
       },
+      {
+        path: "add",
+        name: "add",
+        component: () => import("@/views/Menu/addMain.vue"),
+
+        
+      },
+      
+      
     ],
   },
 ];

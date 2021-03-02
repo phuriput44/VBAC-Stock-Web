@@ -43,7 +43,7 @@ export default {
           pagename: "หน้าแรก",
         },
         {
-          pagepath: "rent",
+          pagepath: "add",
           iconpath: require("@/assets/Imgs/Menu/add.png"),
           pagename: "เพิ่ม",
         },
