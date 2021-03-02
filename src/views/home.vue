@@ -48,7 +48,7 @@ export default {
           pagename: "เพิ่ม",
         },
         {
-          pagepath: "main",
+          pagepath: "withdraw",
           iconpath: require("@/assets/Imgs/Menu/withdraw.png"),
           pagename: "เบิก",
         },
