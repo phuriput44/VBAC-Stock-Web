@@ -6,7 +6,7 @@
           <div class="col">
             <div class="txt-content-size85" style="float: left !important;">{{enable}}</div>
             <div
-              class="txt-content-size50"
+              class="txt-content-size40"
               style="float: left !important;"
             >
               เบิกได้
@@ -25,7 +25,7 @@
           <div class="col">
             <div class="txt-content-size85" style="float: left !important;">{{disable}}</div>
             <div
-              class="txt-content-size50"
+              class="txt-content-size40"
               style="float: left !important;"
             >
               หมดสต็อก
