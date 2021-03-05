@@ -34,8 +34,8 @@
             )"
             :key="inx"
           >
-            <td>{{ item.id }}</td>
-            <td>{{ item.name }}</td>
+            <td>{{ item.category_id }}</td>
+            <td>{{ item.category_name }}</td>
           </tr>
         </tbody>
       </table>
@@ -85,49 +85,8 @@ export default {
   name: "category",
   data() {
     return {
-        addCatName: "",
-      categorylist: [
-        {
-          id: 1,
-          name: "test1",
-        },
-        {
-          id: 2,
-          name: "test2",
-        },
-        {
-          id: 3,
-          name: "test2",
-        },
-        {
-          id: 4,
-          name: "test2",
-        },
-        {
-          id: 5,
-          name: "test2",
-        },
-        {
-          id: 6,
-          name: "test2",
-        },
-        {
-          id: 7,
-          name: "test2",
-        },
-        {
-          id: 8,
-          name: "test2",
-        },
-        {
-          id: 9,
-          name: "test2",
-        },
-        {
-          id: 10,
-          name: "test2",
-        },
-      ],
+      addCatName: "",
+      categorylist: [],
       Page: 1,
       PerPage: 5,
     };
@@ -143,10 +102,20 @@ export default {
         this.Page += 1;
       }
     },
-    Add(name){
-        this.categorylist.push({"id":this.categorylist.length+1,"name":name})
-        console.log(console.log(JSON.stringify(this.categorylist)))
-    }
+    Add(name) {
+      this.categorylist.push({ id: this.categorylist.length + 1, name: name });
+      console.log(console.log(JSON.stringify(this.categorylist)));
+    },
+  },
+    mounted() {
+    this.$axios
+      .get("action.php", {
+        action: "getCat",
+      })
+      .then(function(res) {
+        this.categorylist = res.data;
+      });
+    console.log(this.categorylist.toString());
   },
 };
 </script>
