@@ -25,13 +25,15 @@
 .txt-content-size36{
   font-size: 36px;
 }
-.txt-content-size50{
-  font-size: 50px;
+.txt-content-size40{
+  font-size: 42px;
 }
 .txt-content-size85{
   font-size: 85px;
 }
-.txt-content-size
+
+
+
 /* Margin and Padding */
 .vb-pd-0 {
   padding: 0px !important;

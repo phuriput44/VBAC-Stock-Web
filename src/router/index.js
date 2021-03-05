@@ -24,6 +24,11 @@ const routes = [
         name: "rent",
         component: () => import("@/views/Menu/rent.vue"),
       },
+      {
+        path: "withdraw",
+        name: "withdraw",
+        component: () => import("@/views/Menu/withdraw.vue")
+      }
     ],
   },
 ];
