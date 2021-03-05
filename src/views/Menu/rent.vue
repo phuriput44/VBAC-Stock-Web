@@ -6,6 +6,8 @@
 
 <script>
     export default {
-        
+         created() {
+   this.$swal('Hello Vue world!!!');
+  }
     }
 </script>

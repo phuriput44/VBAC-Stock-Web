@@ -17,7 +17,7 @@
     </div>
 
     <div class="main">
-      <div style="padding-top:100px;">
+      <div style="padding-top:100px; ">
       <router-view></router-view>
       </div>
     </div>
@@ -43,12 +43,12 @@ export default {
           pagename: "หน้าแรก",
         },
         {
-          pagepath: "rent",
+          pagepath: "add",
           iconpath: require("@/assets/Imgs/Menu/add.png"),
           pagename: "เพิ่ม",
         },
         {
-          pagepath: "withdraw",
+          pagepath: "main",
           iconpath: require("@/assets/Imgs/Menu/withdraw.png"),
           pagename: "เบิก",
         },
