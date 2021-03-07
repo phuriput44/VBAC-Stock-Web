@@ -1,5 +1,5 @@
 <?php 
-$connect=new PDO("mysql:host=localhost;dbname=vbac_stock","root","1234");
+
 #รับค่าที่ส่งมา
 $request_data=json_decode(file_get_contents("php://input"));
 $data=array();

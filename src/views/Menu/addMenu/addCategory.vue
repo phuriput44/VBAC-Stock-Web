@@ -15,7 +15,7 @@
         <input class="vb-input-text" v-model="addCatName" />
       </div>
       <div class="col-6 col-md-4 text-left vb-pl-50" style="margin-top:89px;">
-        <button @click="Add(addCatName)" class="btn-custom">เพิ่ม</button>
+        <button @click="Add()" class="btn-custom">เพิ่ม</button>
       </div>
     </div>
     <div style="width:875px; height:435px; margin-left:10%;">
@@ -77,10 +77,13 @@
         </li>
       </ul>
     </div>
+    <del-category-component :categoryData="this.categorylist" />
   </div>
 </template>
 
 <script>
+import DelCategoryComponent from "@/components/delCategoryComponent.vue";
+
 export default {
   name: "category",
   data() {
@@ -102,20 +105,37 @@ export default {
         this.Page += 1;
       }
     },
-    Add(name) {
-      this.categorylist.push({ id: this.categorylist.length + 1, name: name });
-      console.log(console.log(JSON.stringify(this.categorylist)));
+    Add() {
+      this.$axios
+        .post("http://localhost/VBAC-Stock-Web/Category/post.php", {
+          catName: this.addCatName,
+        })
+        .then((res) => {
+          if (res.status == 200) {
+            this.$swal
+              .fire({
+                icon: "success",
+                text: "ทำการเพิ่มหมวดหมู่เสร็จสิ้น",
+              })
+              .then((result) => {
+                if (result.isConfirmed) {
+                  window.location.reload();
+                }
+              });
+          }
+        })
+        .catch((err) => console.error(err));
     },
   },
-    mounted() {
-    this.$axios
-      .get("action.php", {
-        action: "getCat",
-      })
-      .then(function(res) {
-        this.categorylist = res.data;
-      });
-    console.log(this.categorylist.toString());
+  async mounted() {
+    this.categorylist = await this.$axios.get(
+      "http://localhost/VBAC-Stock-Web/Category/get.php"
+    );
+    this.categorylist = this.categorylist.data;
+    console.log(this.categorylist);
+  },
+  components: {
+    DelCategoryComponent,
   },
 };
 </script>

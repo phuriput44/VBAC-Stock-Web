@@ -86,6 +86,7 @@ export default {
         this.$emit("input", file[0]);
       }
       this.stockData.pic = `url(${this.previewImage})`;
+      console.log(atob(this.previewImage));
     },
     cancel() {
       this.$router.push("/home/");
