@@ -48,7 +48,7 @@ export default {
           pagename: "เพิ่ม",
         },
         {
-          pagepath: "main",
+          pagepath: "withdraw",
           iconpath: require("@/assets/Imgs/Menu/withdraw.png"),
           pagename: "เบิก",
         },
@@ -58,12 +58,12 @@ export default {
           pagename: "ยืม",
         },
         {
-          pagepath: "main",
+          pagepath: "return",
           iconpath: require("@/assets/Imgs/Menu/return.png"),
           pagename: "คืน",
         },
         {
-          pagepath: "main",
+          pagepath: "viewList",
           iconpath: require("@/assets/Imgs/Menu/list.png"),
           pagename: "รายการ",
         },
