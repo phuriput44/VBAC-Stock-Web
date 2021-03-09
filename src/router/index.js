@@ -39,6 +39,7 @@ const routes = [
             name: "category",
             component: () => import("@/views/Menu/addMenu/addCategory.vue"),
           },
+          
         ],
       },
       {
@@ -46,6 +47,18 @@ const routes = [
         name: "withdraw",
         component: () => import("@/views/Menu/withdraw.vue"),
       },
+      {
+        path: "return",
+        name: "return",
+        component: () => import("@/views/Menu/return.vue"),
+      },
+      {
+        path: "viewList",
+        name: "viewList",
+        component: () => import("@/views/Menu/viewList.vue"),
+      },
+
+      
     ],
   },
 ];
