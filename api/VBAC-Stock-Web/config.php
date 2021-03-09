@@ -1,6 +1,8 @@
 <?php
 
 header("Access-Control-Allow-Origin: *");
-$connect=new PDO("mysql:host=localhost;dbname=vbac_stock","root","1234");
+header("Access-Control-Allow-Headers: *");
+
+$connect=new PDO("mysql:host=localhost;dbname=vbac_stock","root","");
 
 ?>
