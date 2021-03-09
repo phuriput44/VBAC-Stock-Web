@@ -4,22 +4,32 @@
       class="txt-title vb-pb-10 vb-pl-20 vb-pr-20 text-left"
       style="border-bottom : 1px solid #7D7D7D;"
     >
-      เพิ่มรายการหมวดหมู่
+      เพิ่มรายการ
     </div>
     <div class="row vb-pt-20 vb-mt-20">
       <div class="col text-left vb-mt-30 vb-ml-30" style="padding-left:3%;">
-        <p class="txt-content">ชื่อหมวดหมู่</p>
+        <p class="txt-content">รหัส</p>
         <input class="vb-input-text" v-model="stockData.id" />
       </div>
       <div class="col text-left vb-mt-30" style="padding-left:1%;">
         <p class="txt-content">ชื่อหมวดหมู่</p>
-        <input class="vb-input-text" v-model="stockData.type" />
+        <select class="vb-input-text " v-model="stockData.types">
+          <option value="none" selected disabled hidden>
+            เลือกหมวดหมู่ที่จะลบ
+          </option>
+          <option
+            v-for="i in categorylist"
+            :key="i.category_id"
+            :value="i.category_id"
+            >{{ i.category_name }}</option
+          >
+        </select>
       </div>
     </div>
     <div class="row vb-pt-20">
       <div class="col text-left vb-ml-30" style="padding-left:3%;">
         <p class="txt-content">ชื่อรายการ</p>
-        <input class="vb-input-text" v-model="stockData.name" />
+        <input class="vb-input-text" v-model="stockData.names" />
       </div>
       <div class="col text-left" style="padding-left:1%;">
         <p class="txt-content">จำนวน</p>
@@ -63,11 +73,13 @@ export default {
       previewImage: null,
       stockData: {
         id: "",
-        type: "",
-        name: "",
+        types: "",
+        names: "",
         amount: "",
         pic: "",
       },
+      categorylist: {},
+      sendData: {},
     };
   },
   methods: {
@@ -81,18 +93,42 @@ export default {
         let reader = new FileReader();
         reader.onload = (e) => {
           this.previewImage = e.target.result;
+          this.stockData.pic = this.previewImage;
         };
         reader.readAsDataURL(file[0]);
         this.$emit("input", file[0]);
       }
-      this.stockData.pic = `url(${this.previewImage})`;
     },
     cancel() {
       this.$router.push("/home/");
     },
     save() {
-      console.log(this.stockData.id);
+      console.log(this.stockData);
+      this.$axios
+        .post("http://localhost/VBAC-Stock-Web/Stock/post.php", this.stockData)
+        .then((res) => {
+          if (res.status == 200) {
+            this.$swal
+              .fire({
+                icon: "success",
+                text: "ทำการเพิ่มเสร็จสิ้น",
+              })
+              .then((result) => {
+                if (result.isConfirmed) {
+                  window.location.reload();
+                }
+              });
+          }
+        })
+        .catch((err) => console.error(err));
     },
+  },
+  async mounted() {
+    this.categorylist = await this.$axios.get(
+      "http://localhost/VBAC-Stock-Web/Category/get.php"
+    );
+    this.categorylist = this.categorylist.data;
+    console.log(this.categorylist);
   },
 };
 </script>

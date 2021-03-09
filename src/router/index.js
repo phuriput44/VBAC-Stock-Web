@@ -41,7 +41,6 @@ const routes = [
           },
         ],
       },
-
       {
         path: "withdraw",
         name: "withdraw",
