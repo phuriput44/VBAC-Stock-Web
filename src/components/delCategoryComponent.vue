@@ -1,5 +1,5 @@
 <template>
-  <div class="container vb-mt-50 vb-pd-20 vb-pt-40" style="margin-left:-12px;">
+  <div class="container vb-mt-50 vb-pd-20 vb-pt-40" style="margin-left:-3%;">
     <div
       class="txt-title vb-pb-10 vb-pl-20 vb-pr-20 text-left"
       style="border-bottom : 1px solid #7D7D7D;"
@@ -47,7 +47,7 @@ export default {
             this.$swal
               .fire({
                 icon: "success",
-                text: "ทำการลดหมวดหมู่เสร็จสิ้น",
+                text: "ทำการลบหมวดหมู่เสร็จสิ้น",
               })
               .then((result) => {
                 if (result.isConfirmed) {
