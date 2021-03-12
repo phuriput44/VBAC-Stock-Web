@@ -20,7 +20,7 @@
         </div>
         <div class="row vb-pt-20">
           <div class="col-2 text-left vb-pl-50" style="margin-top:89px;">
-            <button @click="Add(addCatName)" class="btn-custom">
+            <button @click="Select(addCatName)" class="btn-custom">
               เลือกรายการ
             </button>
           </div>
@@ -116,6 +116,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -135,7 +136,13 @@ export default {
         this.Page += 1;
       }
     },
-    Select() {},
+    Select() {
+      this.$swal
+              .fire({
+                icon: "success",
+                text: "ทำการเพิ่มเสร็จสิ้น",
+              })
+    },
   },
 };
 </script>

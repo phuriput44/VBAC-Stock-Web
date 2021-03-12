@@ -108,17 +108,17 @@ export default {
         .post("http://localhost/VBAC-Stock-Web/Stock/post.php", this.stockData)
         .then((res) => {
           if (res.status == 200) {
-            console.log(res.data)
-            // this.$swal
-            //   .fire({
-            //     icon: "success",
-            //     text: "ทำการเพิ่มเสร็จสิ้น",
-            //   })
-            //   .then((result) => {
-            //     if (result.isConfirmed) {
-            //       window.location.reload();
-            //     }
-            //   });
+            console.log(res.data);
+            this.$swal
+              .fire({
+                icon: "success",
+                text: "ทำการเพิ่มเสร็จสิ้น",
+              })
+              .then((result) => {
+                if (result.isConfirmed) {
+                  window.location.reload();
+                }
+              });
           }
         })
         .catch((err) => console.error(err));
