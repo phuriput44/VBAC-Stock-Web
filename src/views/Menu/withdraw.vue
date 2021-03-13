@@ -11,104 +11,47 @@
         <div class="row vb-pt-20 vb-mt-20">
           <div class="col text-left vb-mt-30 vb-ml-30" style="padding-left:3%;">
             <p class="txt-content">ชื่อผู้เบิก</p>
-            <input class="vb-input-text" />
+            <input class="vb-input-text" v-model="name" />
           </div>
           <div class="col text-left vb-mt-30" style="padding-left:1%;">
             <p class="txt-content">นามสกุลผู้เบิก</p>
-            <input class="vb-input-text" />
+            <input class="vb-input-text" v-model="surname" />
           </div>
         </div>
         <div class="row vb-pt-20">
           <div class="col-2 text-left vb-pl-50" style="margin-top:89px;">
-            <button @click="Select(addCatName)" class="btn-custom">
-              เลือกรายการ
-            </button>
+            <modal :getData="this.stockData"></modal>
           </div>
-
           <div
             class="col-9"
             style="width:875px; height:435px; margin-left: 5%;"
           >
-            <table class="table table-bordered">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col-4">รูปภาพ</th>
-                  <th scope="col-4">รายการ</th>
-                  <th scope="col-2" style="width: 20%;">จำนวน</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  v-for="(item, inx) in stockData.slice(
-                    (Page - 1) * PerPage,
-                    Page * PerPage
-                  )"
-                  :key="inx"
-                >
-                  <td>{{ item.stock_pic }}</td>
-                  <td>
-                    {{ item.stock_id }}+{{ item.stock_name }}+{{
-                      item.category_name
-                    }}
-                  </td>
-                  <td>{{ item.stock_amount }}</td>
-                </tr>
-              </tbody>
-            </table>
-            <ul class="text-right" style="padding-left: 10%; margin-top: 10px;">
-              <li class="d-inline-block">
-                <button @click="Previous()">
-                  <svg
-                    class="bi bi-caret-left-fill"
-                    width="50px"
-                    height="30px"
-                    viewBox="0 0 16 16"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 00-1.659-.753l-5.48 4.796a1 1 0 000 1.506z"
-                    />
-                  </svg>
-                </button>
-              </li>
-              <li class="page-num-profitLoss d-inline-block">
-                {{ Page + "/" + Math.ceil(this.stockData.length / PerPage) }}
-              </li>
-              <li class="d-inline-block">
-                <button @click="Next()">
-                  <svg
-                    class="bi bi-caret-right-fill"
-                    width="50px"
-                    height="30px"
-                    viewBox="0 0 16 16"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 011.659-.753l5.48 4.796a1 1 0 010 1.506z"
-                    />
-                  </svg>
-                </button>
-              </li>
-            </ul>
+            <stock-table
+              :getStockData="this.withdrawData"
+              :PerPage="2"
+              :columnName="this.columnName"
+            ></stock-table>
           </div>
         </div>
-      </div>
-      <div class="row vb-mt-20" style="background-color:#E8E8E8">
-        <div class="col">
-          <button @click="save()" class="btn-custom float-right">
-            บันทึก
-          </button>
-        </div>
-        <div class="col">
-          <button
-            @click="cancel()"
-            class="btn-custom float-left"
-            style="background-color:grey;"
-          >
-            ยกเลิก
-          </button>
+        <div class="row vb-mt-20" style="background-color:#E8E8E8">
+          <div class="col">
+            <confirm
+              :getStockData="this.withdrawData"
+              :name="this.name"
+              :surname="this.surname"
+              :withdrawID="this.withdrawID"
+              pathAxios="http://localhost/VBAC-Stock-Web/Stock/withdraw.php"
+            ></confirm>
+          </div>
+          <div class="col">
+            <button
+              @click="cancel()"
+              class="btn-custom float-left"
+              style="background-color:grey;"
+            >
+              ยกเลิก
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -116,33 +59,33 @@
 </template>
 
 <script>
+import Confirm from "../../components/confirm.vue";
+import modal from "../../components/modal.vue";
+import StockTable from "../../components/stockTable.vue";
 
 export default {
+  components: { modal, StockTable, Confirm },
   data() {
     return {
       stockData: [],
-      Page: 1,
-      PerPage: 3,
+      name: "",
+      surname: "",
+      columnName: ["รูปภาพ", "รายการ", "จำนวนที่เบิก"],
+      withdrawData: [],
+      withdrawID: {},
     };
   },
   methods: {
-    Previous() {
-      if (this.Page != 1) {
-        this.Page -= 1;
-      }
+    cancel() {
+      this.$router.push("/home/");
     },
-    Next() {
-      if (this.Page != Math.ceil(this.stockData.length / this.PerPage)) {
-        this.Page += 1;
-      }
-    },
-    Select() {
-      this.$swal
-              .fire({
-                icon: "success",
-                text: "ทำการเพิ่มเสร็จสิ้น",
-              })
-    },
+  },
+  async mounted() {
+    this.stockData = await this.$axios.get(
+      "http://localhost/VBAC-Stock-Web/Stock/get_all.php"
+    );
+    this.stockData = this.stockData.data;
+    console.log(this.stockData);
   },
 };
 </script>

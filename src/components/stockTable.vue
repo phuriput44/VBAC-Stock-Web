@@ -2,10 +2,8 @@
   <div>
     <table class="table table-profit" :style="color">
       <thead style="color: white;" class="vb-mt-50">
-        <tr style="background-color: #000000;">
-          <th scope="col" style="width: 35%">รูปภาพ</th>
-          <th scope="col">รายการ</th>
-          <th scope="col">คงเหลือ</th>
+        <tr style="background-color: #000000;" class="text-center">
+          <th scope="col" v-for="(item,inx) in this.columnName" :key="inx" class="col-3" >{{item}}</th>
         </tr>
       </thead>
       <tbody>
@@ -26,9 +24,10 @@
             </p>
           </td>
           <td>
-            <p v-if="item.stock_amount == 0" style="padding-top : 20%; color:red;">{{ item.stock_amount }}</p>
-            <p v-else style="padding-top : 20%; color:black;">{{ item.stock_amount }}</p>
+            <p v-if="item.stock_amount == 0" style="padding-top : 12%; color:red;" class="text-center">{{ item.stock_amount }}</p>
+            <p v-else style="padding-top : 10%; color:black;" class="text-center">{{ item.stock_amount }}</p>
           </td>
+          <td v-if="item.person_date">asd</td>
         </tr>
       </tbody>
     </table>
@@ -74,14 +73,24 @@
 
 <script>
 export default {
+  data() {
+    return {
+      Page: 1
+    }
+  },
   name: "stockTable",
   props: {
     getStockData: {
       type: null,
     },
-    Page: { type: Number(), default: 1 },
     PerPage: { type: Number(), default: 4 },
     color: { type: String(), default: "background-color : white;" },
+    columnName : {type: Array,
+        default: () => ([
+            "รูปภาพ",
+            "รายการ",
+            "คงเหลือ"
+        ])}
   },
   methods: {
     Previous() {

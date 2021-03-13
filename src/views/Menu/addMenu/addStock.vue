@@ -15,7 +15,7 @@
         <p class="txt-content">ชื่อหมวดหมู่</p>
         <select class="vb-input-text " v-model="stockData.types">
           <option value="none" selected disabled hidden>
-            เลือกหมวดหมู่ที่จะลบ
+            เลือกหมวดหมู่ที่ต้องการ
           </option>
           <option
             v-for="i in categorylist"
