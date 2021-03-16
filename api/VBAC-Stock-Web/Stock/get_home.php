@@ -14,11 +14,19 @@ $statement->execute();
 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
     $enable = array("enable" => $row["COUNT(stock_id)"]);
 }
-$query = " SELECT * FROM stock_table JOIN category_table ct ON stock_table.stock_category_id = ct.category_id WHERE stock_amount = 0" ;
+$query = " SELECT * FROM stock_table JOIN category_table ct ON stock_table.stock_category_id = ct.category_id WHERE stock_amount = 0";
 $statement = $connect->prepare($query);
 $statement->execute();
+$data = array(null);
 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-    $data[] = $row;
+    if ($row != null) {
+        $data = $row;
+    }
 }
-$array = array($disable, $enable,$data);
-echo(json_encode($array));
+if ($data[0] != null) {
+    $array = array($disable, $enable, $data);
+}
+else{
+    $array = array($disable, $enable);
+}
+echo (json_encode($array));
