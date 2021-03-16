@@ -68,7 +68,7 @@ export default {
           pagename: "รายการ",
         },
         {
-          pagepath: "main",
+          pagepath: "login",
           iconpath: require("@/assets/Imgs/Menu/logout.png"),
           pagename: "ออกจากระบบ",
         },

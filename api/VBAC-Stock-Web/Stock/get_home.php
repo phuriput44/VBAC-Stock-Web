@@ -17,13 +17,12 @@ while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
 $query = " SELECT * FROM stock_table JOIN category_table ct ON stock_table.stock_category_id = ct.category_id WHERE stock_amount = 0";
 $statement = $connect->prepare($query);
 $statement->execute();
-$data = array(null);
+$data = array();
 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-    if ($row != null) {
-        $data = $row;
-    }
+        $data[] = $row;
+
 }
-if ($data[0] != null) {
+if ($data != null) {
     $array = array($disable, $enable, $data);
 }
 else{
