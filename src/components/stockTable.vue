@@ -3,7 +3,7 @@
     <table class="table table-profit" :style="color">
       <thead style="color: white;" class="vb-mt-50">
         <tr style="background-color: #000000;" class="text-center">
-          <th scope="col" v-for="(item,inx) in this.columnName" :key="inx" class="col-3" >{{item}}</th>
+          <th scope="col" v-for="(item,inx) in this.columnName" :key="inx" >{{item}}</th>
         </tr>
       </thead>
       <tbody>
@@ -27,7 +27,6 @@
             <p v-if="item.stock_amount == 0" style="padding-top : 12%; color:red;" class="text-center">{{ item.stock_amount }}</p>
             <p v-else style="padding-top : 10%; color:black;" class="text-center">{{ item.stock_amount }}</p>
           </td>
-          <td v-if="item.person_date">asd</td>
         </tr>
       </tbody>
     </table>
