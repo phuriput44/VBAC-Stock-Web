@@ -40,11 +40,11 @@
             </td>
             <td>
               <p style="padding-top : 20%;">
-                {{ item.return_amoun }}
+                {{ item.return_amount }}
               </p>
             </td>
             <td><p style="padding-top : 12%;">{{ item.person_date }}</p></td>
-            <td><button class="btn-custom">ยืนยันการคืน</button></td>
+            <td><button class="btn-custom" @click="deleteReturn(inx)">ยืนยันการคืน</button></td>
           </tr>
         </tbody>
       </table>
@@ -94,71 +94,7 @@ export default {
   name: "return",
   data() {
     return {
-      returnData: [
-        {
-          person_name: "พหุคุณ",
-          person_surname: "บุญปาน",
-          stock_id: 1114,
-          stock_name: "ปากกาจ้า",
-          category_name: "Pen",
-          person_date: "31-Mar-21",
-          return_amoun: 20,
-        },
-        {
-          person_name: "พหุคุณ",
-          person_surname: "บุญปาน",
-          stock_id: 1114,
-          stock_name: "ปากกาจ้า",
-          category_name: "Pen",
-          person_date: "31-Mar-21",
-          return_amoun: 20,
-        },
-        {
-          person_name: "พหุคุณ",
-          person_surname: "บุญปาน",
-          stock_id: 1114,
-          stock_name: "ปากกาจ้า",
-          category_name: "Pen",
-          person_date: "31-Mar-21",
-          return_amoun: 20,
-        },
-        {
-          person_name: "พหุคุณ",
-          person_surname: "บุญปาน",
-          stock_id: 1114,
-          stock_name: "ปากกาจ้า",
-          category_name: "Pen",
-          person_date: "31-Mar-21",
-          return_amoun: 20,
-        },
-        {
-          person_name: "พหุคุณ",
-          person_surname: "บุญปาน",
-          stock_id: 1114,
-          stock_name: "ปากกาจ้า",
-          category_name: "Pen",
-          person_date: "31-Mar-21",
-          return_amoun: 20,
-        },
-        {
-          person_name: "พหุคุณ",
-          person_surname: "บุญปาน",
-          stock_id: 1114,
-          stock_name: "ปากกาจ้า",
-          category_name: "Pen",
-          person_date: "31-Mar-21",
-          return_amoun: 20,
-        },
-        {
-          person_name: "พหุคุณ",
-          person_surname: "บุญปาน",
-          stock_id: 1114,
-          stock_name: "ปากกาจ้า",
-          category_name: "Pen",
-          person_date: "31-Mar-21",
-          return_amoun: 20,
-        },
-      ],
+      returnData: [],
       Page: 1,
       PerPage: 4,
     };
@@ -174,6 +110,42 @@ export default {
         this.Page += 1;
       }
     },
+    deleteReturn(inx){
+      this.$axios
+        .post("http://localhost/VBAC-Stock-Web/Stock/del_return.php", {
+          return_id: this.returnData[inx].return_id,
+          person_id: this.returnData[inx].person_id,
+          stock_id: this.returnData[inx].stock_id,
+          return_amount: this.returnData[inx].return_amount
+        })
+        .then((res) => {
+          if (res.status == 200) {
+            console.log(res.data);
+            this.$swal
+              .fire({
+                icon: "success",
+                text: "การคืนเสร็จสิ้น",
+              })
+              .then((result) => {
+                if (result.isConfirmed) {
+                  window.location.reload();
+                }
+              });
+          }
+        })
+        .catch((err) => console.error(err));
+      console.log(this.returnData[inx].return_id);
+      console.log(this.returnData[inx].person_id);
+      console.log(this.returnData[inx].stock_id);
+      console.log(this.returnData[inx].return_amount);
+    }
+  },
+  async mounted() {
+    this.returnData = await this.$axios.get(
+      "http://localhost/VBAC-Stock-Web/Stock/get_rent.php"
+    );
+    this.returnData = this.returnData.data;
+    console.log(this.returnData);
   },
 };
 </script>
