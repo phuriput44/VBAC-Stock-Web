@@ -1,0 +1,15 @@
+1. โหลดโปรแกรม  XAMPP และ node.js มาติดตั้ง 
+2. เปิด XAMPP แล้วเลือกที่ Explorer แล้วเปิดโฟลเดอร์ที่ชื่อ htdocs
+3. copy โฟลเดอร์ที่ชื่อ VBAC-Stock-Web อยู่ใน path => VBAC-Stock-Web\api นำมาวางไว้ใน htdocs
+4. กด Start ที่ Apache และ MySQL บนโปรแกรม XAMPP
+5. เปิด Web browser ขึ้นมา แล้วเข้าไปที่ http://localhost/dashboard/ (ก๊อปไปวางก็ได้) แล้วเลือกที่ phpMyAdmin
+6. เลือกที่ Databases ให้ตั้งชื่อ Database ว่า vbac_stock (เท่านั้น) แล้วคลิกที่ปุ่ม Create
+7. เลือกที่ vbac_stock ที่เราสร้างขึ้นมาใหม่ แล้วคลิกที่ Import ด้านบน จะมีหัวข้อที่ชื่อว่า File to import ให้เลือกที่ Choose File
+แล้วหาไฟล์ชื่อ vbac_stock_202103161413.sql (จะอยู่ในโฟล์เดอร์ของ VBAC-Strock-Web) เลือกไฟล์เสร็จแล้วให้คลิกที่ Go มุมขวาล่าง
+8. กด Shift+คลิกขวาที่โฟลเดอร์ VBAC-Strock-Web เลือก Open PowerShell window here
+9. ในกรณีที่รันงานครั้งแรกให้พิมพ์คำสั่งใน Terminal ว่า npm install แล้วกด Enter
+10. พิมพ์คำสั่ง npm run serve แล้วรอให้ Link ของเว็บขึ้นมา จากนั้น copy Link ไปเปิดใน Web browser
+
+Link Download 
+node.js => https://nodejs.org/dist/v14.16.0/node-v14.16.0-x64.msi
+XAMPP => https://www.apachefriends.org/xampp-files/8.0.3/xampp-windows-x64-8.0.3-0-VS16-installer.exe
